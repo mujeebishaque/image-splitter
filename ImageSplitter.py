@@ -40,3 +40,8 @@ class ImageSplitter:
     def image_channels(self):
         return self.image_file.mode.__str__()
 
+    def show_channels(self):
+        pass
+
+    def save_channels(self):
+        pass
