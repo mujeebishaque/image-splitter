@@ -37,9 +37,6 @@ class ImageSplitter:
     def image_format(self):
         return self.determine_format().__str__()
 
-    def has_three_channels(self):
+    def image_channels(self):
+        return self.image_file.mode.__str__()
 
-        return False
-
-    def has_four_channels(self):
-        return False
