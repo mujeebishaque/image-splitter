@@ -31,21 +31,32 @@ class ImageSplitter:
     
     @property
     def number_of_channels(self):
-        return self.image_file.getbands()
+        return self.image_file.mode.__str__()
     
     @property
     def image_format(self):
         return self.determine_format().__str__()
 
     def image_channels(self):
-        return self.image_file.mode.__str__()
-
+        data   = self.image_file.getdata()
+        r = [(d[0], 0, 0) for d in data]
+        g = [(0, d[1], 0) for d in data]
+        b = [(0, 0, d[2]) for d in data]
+        
     def show_channels(self):
         # show channels imshow simultaneously
-        pass
+        r, g, b = self.image_file.split()
 
     def save_channels(self):
-        # get channels
-        # append channel name to it
-        # also add UUID
-        pass
+        data = self.image_file.getdata()
+        # Suppress specific bands (e.g. (255, 120, 65) -> (0, 120, 0) for g)
+        r = [(d[0], 0, 0) for d in data]
+        g = [(0, d[1], 0) for d in data]
+        b = [(0, 0, d[2]) for d in data]
+
+        img.putdata(r)
+        img.save('r.png')
+        img.putdata(g)
+        img.save('g.png')
+        img.putdata(b)
+        img.save('b.png')
