@@ -41,7 +41,11 @@ class ImageSplitter:
         return self.image_file.mode.__str__()
 
     def show_channels(self):
+        # show channels imshow simultaneously
         pass
 
     def save_channels(self):
+        # get channels
+        # append channel name to it
+        # also add UUID
         pass
