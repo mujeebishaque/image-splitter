@@ -18,3 +18,4 @@ if __name__ == '__main__':
         raise Exception('Please provide an image file path')
 
     _image = ImageSplitter(filename)
+    print(_image.image_format)
