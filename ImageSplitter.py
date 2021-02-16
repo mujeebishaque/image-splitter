@@ -27,7 +27,7 @@ class ImageSplitter:
 
     @property
     def number_of_channels(self):
-        return len(self.image_file.mode.__str__())
+        return self.image_file.getbands().__str__()
     
     @property
     def image_format(self):
