@@ -33,6 +33,10 @@ class ImageSplitter:
     def image_format(self):
         return self.image_file.format.__str__()
 
+    @property
+    def image_dimensions(self):
+        return self.image_file.size.__str__()
+
     def image_channels(self):
         data   = self.image_file.getdata()
         r = [(d[0], 0, 0) for d in data]

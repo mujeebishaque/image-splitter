@@ -19,3 +19,5 @@ if __name__ == '__main__':
 
     _image = ImageSplitter(filename)
     print(_image.image_format)
+    print(_image.number_of_channels)
+    print(_image.image_dimensions)
