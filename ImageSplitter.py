@@ -27,7 +27,7 @@ class ImageSplitter:
 
     @property
     def number_of_channels(self):
-        return self.image_file.getbands().__str__()
+        return self.image_file.getbands().__len__()
     
     @property
     def image_format(self):
@@ -36,16 +36,25 @@ class ImageSplitter:
     @property
     def image_dimensions(self):
         return self.image_file.size.__str__()
-
-    def image_channels(self):
-        data   = self.image_file.getdata()
-        r = [(d[0], 0, 0) for d in data]
-        g = [(0, d[1], 0) for d in data]
-        b = [(0, 0, d[2]) for d in data]
         
     def show_channels(self):
         # show channels imshow simultaneously
-        r, g, b = self.image_file.split()
+        if self.number_of_channels == 1:
+            self.image_file.show()            
+        
+        if self.number_of_channels == 3:
+            r, g, b = self.image_file.split()
+            r.show()
+            g.show()
+            b.show()
+        
+        if self.number_of_channels == 4:
+            r, g, b, a = self.image_file.split()
+            r.show()
+            g.show()
+            b.show()
+            a.show()
+        
 
     def save_channels(self):
         data = self.image_file.getdata()

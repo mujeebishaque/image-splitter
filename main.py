@@ -21,3 +21,4 @@ if __name__ == '__main__':
     print(_image.image_format)
     print(_image.number_of_channels)
     print(_image.image_dimensions)
+    print(_image.show_channels())
