@@ -58,4 +58,23 @@ class ImageSplitter:
         
     def save_channels(self):
         # Save image channels in current working directory
-        pass
+        if self.number_of_channels == 1:
+            sys.stdout.writelines(''' 
+            -------------------------------------
+                THIS IMAGE HAS ALREADY ONE CHANNEL ONLY. NO NEED TO PROCEED.
+            -------------------------------------
+            ''')
+            return
+        
+        if self.number_of_channels == 3:
+            r, g, b = self.image_file.split()
+            r.save()
+            g.save()
+            b.save()
+        
+        if self.number_of_channels == 4:
+            r, g, b, a = self.image_file.split()
+            r.save()
+            g.save()
+            b.save()
+            a.save()
