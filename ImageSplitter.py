@@ -3,7 +3,9 @@ Image Splitter -> Split any image into multiple channels.
 RGBA image would be splitted into 4 channels.
 RGB would be splitted into 3 channels only.
 '''
-import os
+
+import os, sys
+
 try:
     from PIL import Image
 except ImportError:
@@ -15,13 +17,12 @@ __version__ = 'v1.0'
 
 class ImageSplitter:
     
-    image_file   = None
-    image_exists = False
+    image_file      = None
+    image_file_path = None
 
     def __init__(self, file_path):
         if os.path.exists(str(file_path)) or os.path.isfile(str(file_path)):
             self.image_file   = Image.open(str(file_path))
-            self.image_exists = True
         else:
             raise FileExistsError("Couldn't find file. Please provide a valid file path.")
 
@@ -55,17 +56,6 @@ class ImageSplitter:
             b.show()
             a.show()
         
-
     def save_channels(self):
-        data = self.image_file.getdata()
-        # Suppress specific bands (e.g. (255, 120, 65) -> (0, 120, 0) for g)
-        r = [(d[0], 0, 0) for d in data]
-        g = [(0, d[1], 0) for d in data]
-        b = [(0, 0, d[2]) for d in data]
-
-        img.putdata(r)
-        img.save('r.png')
-        img.putdata(g)
-        img.save('g.png')
-        img.putdata(b)
-        img.save('b.png')
+        # Save image channels in current working directory
+        pass
