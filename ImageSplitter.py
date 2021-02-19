@@ -58,7 +58,6 @@ class ImageSplitter:
         
     def save_channels(self):
         # Save image channels in current working directory
-        numbers_generator = (i for i in random.sample(range(101), 101) if i%10<5)
 
         if self.number_of_channels == 1:
             sys.stdout.writelines(''' 
