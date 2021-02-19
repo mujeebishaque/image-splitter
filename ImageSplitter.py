@@ -4,7 +4,7 @@ RGBA image would be splitted into 4 channels.
 RGB would be splitted into 3 channels only.
 '''
 
-import os, sys
+import os, sys, random, uuid
 
 try:
     from PIL import Image
@@ -17,8 +17,8 @@ __version__ = 'v1.0'
 
 class ImageSplitter:
     
+    current_dir     = os.path.abspath(os.path.dirname(__file__))
     image_file      = None
-    image_file_path = None
 
     def __init__(self, file_path):
         if os.path.exists(str(file_path)) or os.path.isfile(str(file_path)):
@@ -58,6 +58,8 @@ class ImageSplitter:
         
     def save_channels(self):
         # Save image channels in current working directory
+        numbers_generator = (i for i in random.sample(range(101), 101) if i%10<5)
+
         if self.number_of_channels == 1:
             sys.stdout.writelines(''' 
             -------------------------------------
@@ -68,13 +70,13 @@ class ImageSplitter:
         
         if self.number_of_channels == 3:
             r, g, b = self.image_file.split()
-            r.save()
-            g.save()
-            b.save()
+            r.save(self.current_dir + os.sep + f'red_{uuid.uuid4().hex}'+'.'+ self.image_format)
+            g.save(self.current_dir + os.sep + f'green_{uuid.uuid4().hex}'+'.'+ self.image_format)
+            b.save(self.current_dir + os.sep + f'blue_{uuid.uuid4().hex}'+'.'+ self.image_format)
         
         if self.number_of_channels == 4:
             r, g, b, a = self.image_file.split()
-            r.save()
-            g.save()
-            b.save()
-            a.save()
+            r.save(self.current_dir + os.sep + f'red_{uuid.uuid4().hex}'+'.'+ self.image_format)
+            g.save(self.current_dir + os.sep + f'green_{uuid.uuid4().hex}'+'.'+ self.image_format)
+            b.save(self.current_dir + os.sep + f'blue_{uuid.uuid4().hex}'+'.'+ self.image_format)
+            a.save(self.current_dir + os.sep + f'red_{uuid.uuid4().hex}'+'.'+ self.image_format)

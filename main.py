@@ -18,7 +18,9 @@ if __name__ == '__main__':
         raise Exception('Please provide an image file path')
 
     _image = ImageSplitter(filename)
+    
     print(_image.image_format)
     print(_image.number_of_channels)
     print(_image.image_dimensions)
-    print(_image.show_channels())
+    _image.show_channels()
+    _image.save_channels()
