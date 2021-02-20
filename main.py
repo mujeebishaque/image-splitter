@@ -7,7 +7,7 @@ import argparse
 
 if __name__ == '__main__':
     
-    parser = argparse.ArgumentParser(description='Input an image file', epilog="Star us on Github @mujeebishaque")
+    parser = argparse.ArgumentParser(description='Input an image file to split into channels')
     parser.add_argument('-i', '--input', type=str, required=True, help="Image Path")
 
     args = vars(parser.parse_args())
