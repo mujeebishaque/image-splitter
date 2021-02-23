@@ -8,7 +8,7 @@
 * Gives you image dimensions
 * Gives you number of channels in an image
 * Shows you all the image channels i.e. RGB, Grayscale, RGBA
-* *_Splits and ***saves all the image channels in the current working directory_***
+* Splits and _**saves all the image channels in the current working directory**_
 
 ## How to use ImageSplitter Class?
 
